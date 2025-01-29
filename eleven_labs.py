@@ -18,7 +18,7 @@ class ElevenLabsManager:
     # Current model options (that I would use) are eleven_monolingual_v1 or eleven_turbo_v2
     # eleven_turbo_v2 takes about 60% of the time that eleven_monolingual_v1 takes
     # However eleven_monolingual_v1 seems to produce more variety and emphasis, whereas turbo feels more monotone. Turbo still sounds good, just a little less interesting
-    def text_to_audio(self, input_text, voice="Doug VO Only", save_as_wave=True, subdirectory="", model_id="eleven_monolingual_v1"):
+    def text_to_audio(self, input_text, voice="Doug VO Only", save_as_wave=True, subdirectory="", model_id="eleven_flash_v2_5"):
         # Currently seems to be a problem with the API where it uses default voice settings, rather than pulling the proper settings from the website
         # Workaround is to get the voice settings for each voice the first time it's used, then pass those settings in manually
         if voice not in self.voice_to_settings:
@@ -29,6 +29,6 @@ class ElevenLabsManager:
             file_name = f"___Msg{str(hash(input_text))}{time.time()}_{model_id}.wav"
         else:
             file_name = f"___Msg{str(hash(input_text))}{time.time()}_{model_id}.mp3"
-        tts_file = os.path.join(os.path.abspath(os.curdir), subdirectory, file_name)
+        tts_file = os.path.join(os.path.abspath(os.curdir), "static", "msg", file_name)
         save(audio_saved,tts_file)
         return tts_file

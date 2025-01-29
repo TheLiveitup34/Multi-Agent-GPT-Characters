@@ -176,6 +176,7 @@ class AudioManager:
         time.sleep(0.1) # Just for safety, no clue if this is needed
 
         filename = f"mic_recording_{int(time.time())}.wav"
+        filename = os.path.join(os.path.abspath(os.curdir), "personal", filename)
         wave_file = wave.open(filename, 'wb')
         wave_file.setnchannels(self.channels)
         wave_file.setsampwidth(audio.get_sample_size(self.audio_format))

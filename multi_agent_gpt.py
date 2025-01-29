@@ -280,6 +280,13 @@ def flask_thread():
 
 if __name__ == '__main__':
     # Register signal handlers
+    # check if websockets_auth.py exists if not then create it
+    if not os.path.exists("websockets_auth.py"):
+        with open("websockets_auth.py", "w") as f:
+            f.write("WEBSOCKET_HOST = 'localhost'\nWEBSOCKET_PORT = 4455\nWEBSOCKET_PASSWORD = 'password'\n")
+        print(f"[red]Please enter the password for the websockets_auth.py file")
+        sys.exit(0)
+
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
     

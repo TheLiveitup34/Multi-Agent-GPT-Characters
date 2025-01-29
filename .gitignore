@@ -3,3 +3,4 @@ static/msg/*
 backup_history_*.txt
 twitch_logs/*
 personal/*
+websockets_auth.py
